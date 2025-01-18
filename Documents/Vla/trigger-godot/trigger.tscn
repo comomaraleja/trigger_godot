@@ -1,3 +1,28 @@
-[gd_scene format=3 uid="uid://bns7b0orjl2rc"]
+[gd_scene load_steps=4 format=3 uid="uid://bns7b0orjl2rc"]
+
+[ext_resource type="Script" path="res://trigger.gd" id="1_kkacr"]
+[ext_resource type="Script" path="res://InterfazTween.gd" id="2_08goh"]
+[ext_resource type="Script" path="res://Pj.gd" id="3_alq2v"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_kkacr")
+
+[node name="Interfaz" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_08goh")
+
+[node name="ProgressBar" type="ProgressBar" parent="Interfaz"]
+layout_mode = 0
+offset_right = 258.0
+offset_bottom = 48.0
+max_value = 500.0
+show_percentage = false
+
+[node name="PJ" type="Node2D" parent="."]
+position = Vector2(534, 320)
+script = ExtResource("3_alq2v")
+
+[connection signal="trigger" from="Interfaz" to="." method="_on_interfaz_trigger"]
